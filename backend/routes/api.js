@@ -1,17 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const moment = require('moment');
+const awsConfig = require('../config/config');
 const AWS = require("aws-sdk");
 
-let awsConfig = {
-    "region": "eu-central-1",
-    "endpoint": "http://dynamodb.eu-central-1.amazonaws.com",
-    "accessKeyId": "AKIAZJFGRM2V4S2A2TH6", 
-    "secretAccessKey": "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"
-};
-AWS.config.update(awsConfig);
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+const upload = multer({ storage: storage });
 
+//CONNECT ON AWS
+AWS.config.update(awsConfig);
 const docClient = new AWS.DynamoDB.DocumentClient();
+
+/*
 const fetchOneByKey = () => {
     let params = {
         TableName: "Users",
@@ -29,6 +37,83 @@ const fetchOneByKey = () => {
         }
     })
 }
+*/
+
+
+router.route('/register').post(async function (req, res) {
+	try
+	{
+		let retVal = { success : false, msg : ''};
+		/*if (!req.body) {res.status(200).json(retVal);  return;}
+        const { name, surname } = req.body;*/
+        console.log({ body : req.body});
+
+        const data = {
+            name: 'Aleksa',
+            surname: 'Radovanovic',
+            email: 'lekaaa111.55@gmail.com',
+        }
+
+        const isSuccess = await createNewUser(data);
+        if(isSuccess){
+            retVal.success = true;
+        }else {
+            retVal.msg = 'Failed, try again later';
+        }
+
+        retVal.idToken = token;
+		res.status(200).json(retVal);
+	}
+	catch(err) {
+        //console.log(err);
+		res.status(200).json([]);
+	}
+});
+
+const createNewUser = async ({ name, surname, email }) => {
+    try {
+        const inputs = {
+            "userid": email, 
+            "creationdate": moment().format('DD/MM/YYYY HH:MM'), 
+            "name": name,
+            "surname": surname,
+            "email": email,
+        };
+    
+        const params = {
+            TableName: "Users",
+            Item:  inputs
+        };
+
+        docClient.put(params, (err) => {
+            if (err) {
+                console.log("users::save::error - " + JSON.stringify(err, null, 2));  
+                return false;                    
+            } else {
+                console.log("users::save::success" ); 
+                return true;                     
+            }
+        });
+    } catch (error) {
+        console.log({error});
+        return false;
+    }
+}
+
+router.route('/loadUsers').get(async function (req, res) {
+	try
+	{
+		let retVal = { success : false, msg : ''};
+
+        retVal.users = await fetchAllUsers();
+
+		res.status(200).json(retVal);
+	}
+	catch(err) {
+        //console.log(err);
+		res.status(200).json([]);
+	}
+});
 
 const fetchAllUsers = async () => {
     try {
@@ -50,50 +135,5 @@ const fetchAllUsers = async () => {
         return [];
     }
 }
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads/')
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    }
-});
-
-const upload = multer({ storage: storage });
-
-router.route('/login').post(async function (req, res) {
-	try
-	{
-		var retVal = { success : false, msg : ''};
-		if (!req.body) {res.status(200).json(retVal);  return;}
-
-        let query = 'SELECT * FROM "Admin" WHERE "username" = $1';
-        const admins = await pool.query(query,[req.body.username]);
-
-
-        retVal.idToken = token;
-		res.status(200).json(retVal);
-	}
-	catch(err) {
-        //console.log(err);
-		res.status(200).json([]);
-	}
-});
-
-router.route('/loadUsers').get(async function (req, res) {
-	try
-	{
-		let retVal = { success : false, msg : ''};
-
-        retVal.users = await fetchAllUsers();
-
-		res.status(200).json(retVal);
-	}
-	catch(err) {
-        //console.log(err);
-		res.status(200).json([]);
-	}
-});
 
 module.exports = router;

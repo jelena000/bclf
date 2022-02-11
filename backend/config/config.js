@@ -10,3 +10,4 @@ module.exports = {
   dburi : 'postgres://postgres:postgres@localhost:5432/postgres',
   serverSecretKey : 'AAAAB3NzaC1yc2EAAAABJQBBAQYYhq4rGOpVYmfUYZ8FATEKnULhoBV6G7jXoib9'
 };
+
