@@ -1,0 +1,8 @@
+
+export const constants = {
+    USER_TOKEN:                 'USER_TOKEN_BCLF_MNE_2022', 
+    REGISTRATION_REQUEST:       'USERS_REGISTRATION_REQUEST',
+    REGISTRATION_SUCCESS:       'USERS_REGISTRATION_SUCCESS',
+    REGISTRATION_FAILURE:       'USERS_REGISTRATION_FAILURE',
+    URL_API:                    'http://localhost:5000',
+};
