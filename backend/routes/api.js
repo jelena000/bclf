@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const moment = require('moment');
-const awsConfig = require('../config/config');
+const awsConfig = require('../config/aws-config');
 const AWS = require("aws-sdk");
 
 const storage = multer.diskStorage({
@@ -41,27 +41,23 @@ const fetchOneByKey = () => {
 
 
 router.route('/register').post(async function (req, res) {
+	let retVal = { success : false, msg : ''};
 	try
 	{
-		let retVal = { success : false, msg : ''};
-		/*if (!req.body) {res.status(200).json(retVal);  return;}
-        const { name, surname } = req.body;*/
-        console.log({ body : req.body});
-
-        const data = {
-            name: 'Aleksa',
-            surname: 'Radovanovic',
-            email: 'lekaaa111.55@gmail.com',
-        }
+		if (!req.body) 
+            {res.status(200).json(retVal);  return;}
+        
+        const { name, surname, email } = req.body;
+        const data = { name, surname, email};
 
         const isSuccess = await createNewUser(data);
         if(isSuccess){
             retVal.success = true;
+            retVal.msg = 'Very good';
         }else {
             retVal.msg = 'Failed, try again later';
         }
 
-        retVal.idToken = token;
 		res.status(200).json(retVal);
 	}
 	catch(err) {
@@ -85,15 +81,12 @@ const createNewUser = async ({ name, surname, email }) => {
             Item:  inputs
         };
 
-        docClient.put(params, (err) => {
-            if (err) {
-                console.log("users::save::error - " + JSON.stringify(err, null, 2));  
-                return false;                    
-            } else {
-                console.log("users::save::success" ); 
-                return true;                     
-            }
+        docClient.put(params, function (err, data) {
+            console.log({err});
+            console.log({data});
         });
+
+        return true;                     
     } catch (error) {
         console.log({error});
         return false;
@@ -103,7 +96,7 @@ const createNewUser = async ({ name, surname, email }) => {
 router.route('/loadUsers').get(async function (req, res) {
 	try
 	{
-		let retVal = { success : false, msg : ''};
+		let retVal = { success : false, msg : '', users: []};
 
         retVal.users = await fetchAllUsers();
 

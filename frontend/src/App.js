@@ -6,7 +6,9 @@ import { Provider} from 'react-redux';
 import store from './_helpers/store.js';
 import {About} from './pages/About'
 import {Main} from './pages/Main'
+import {Registration} from './pages/Registration'
 
+import './styles/index.css'
 function App() {
   return (
     <Provider store={store}>
@@ -16,6 +18,7 @@ function App() {
 					<Routes>
 						<Route path="/" exact element={<Main />}/>
 						<Route path="/About"  element={<About />}/>
+						<Route path="/Registration"  element={<Registration />}/>
 					</Routes>
 				</div>
 			</Fragment>

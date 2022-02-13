@@ -1,13 +1,13 @@
-import {userConstants} from '../_constants/user-constants';
+import {constants} from '../_constants/constants';
 
 export function success(user) { 
-	return { type: userConstants.REGISTRATION_SUCCESS, username : user };
+	return { type: constants.REGISTRATION_SUCCESS, username : user };
 }
 
 export function failure() { 
-	return { type: userConstants.REGISTRATION_FAILURE} ;
+	return { type: constants.REGISTRATION_FAILURE} ;
 }
 
 export function logout() { 
-	return { type: userConstants.LOGOUT} ;
+	return { type: constants.LOGOUT} ;
 }
