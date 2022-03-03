@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-export const Footer = () => {
+export default function Footer() {
   return (
-    <div>Footer</div>
+    <div className='h-32 bg-gray-700 w-full' style={{backgroundColor: '#dbe1ec'}}>
+    </div>
   )
 }

@@ -47,8 +47,24 @@ router.route('/register').post(async function (req, res) {
 		if (!req.body) 
             {res.status(200).json(retVal);  return;}
         
-        const { name, surname, email } = req.body;
-        const data = { name, surname, email};
+        const { 
+            /*completedSteps,*/
+            name, surname, email, phone, /*country,*/ city, postalCode, organisation, adress, dietary, invitationLetter,
+            registrationPlan,
+            /*shouldAccommodate,*/ arrivalDate, departureDate, nights, roomDeposit, noteAccommodate,
+            /*arrivalTransfer,*/ arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer, /*departureTransfer,*/
+            departurePersonsTransfer, departureDateTransfer, departureFlightTransfer, departureFromTransfer, 
+            /*invoiceIssue,*/ invoiceCompany, /*invoiceCountry,*/ invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax
+        } = req.body;
+
+        const data = { 
+            registrationPlan,
+            name, surname, email, phone, city, postalCode, organisation, adress, dietary, invitationLetter,
+            arrivalDate, departureDate, nights, roomDeposit, noteAccommodate,
+            arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer, 
+            departurePersonsTransfer, departureDateTransfer, departureFlightTransfer, departureFromTransfer, 
+            invoiceCompany, invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax
+        };
 
         const isSuccess = await createNewUser(data);
         if(isSuccess){
@@ -66,14 +82,15 @@ router.route('/register').post(async function (req, res) {
 	}
 });
 
-const createNewUser = async ({ name, surname, email }) => {
+const createNewUser = async (data) => {
     try {
         const inputs = {
-            "userid": email, 
+            ...data,
+            "userid": data.email, 
             "creationdate": moment().format('DD/MM/YYYY HH:MM'), 
-            "name": name,
-            "surname": surname,
-            "email": email,
+            "name": data.name,
+            "surname": data.surname,
+            "email": data.email,
         };
     
         const params = {
