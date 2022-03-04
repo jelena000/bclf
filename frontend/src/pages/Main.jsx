@@ -6,8 +6,7 @@ import bclf from '../assets/bclf.png';
 import bscl from '../assets/bscl.png';
 import eflm from '../assets/eflm.png';
 import ifcc from '../assets/ifcc.png';
-import chemi from '../assets/chemi4.svg';
-import chemi2 from '../assets/chemi3.svg';
+import city from '../assets/people2.svg';
 import Footer from '../components/Footer/Footer';
 /**
  *                 <div className='h-96  relative w-full' style={{ background: 'linear-gradient(#001746, #133987)', zIndex: 22, height: 400}}>
@@ -63,17 +62,17 @@ export const Main = () => {
 						</div>
 					</div>
 				</div>
-				<section className=' pb-32'>
+				<section className='pb-32'>
 					<div className='w-full  lg:w-3/4 m-auto pt-24'>
 						<div className='text-center pb-16'>
-							<h1> Expore our services </h1>
+							<h1> Explore our services </h1>
 							<p className='text-gray-500'>
-								Expore our services with buttons
+								Explore our services with buttons
 							</p>
 						</div>
 						<div className='flex justify-center items-center flex-wrap'>
 							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
-								<div className='bg-white h-52 rounded-xl shadow-md p-10 flex items-center justify-start'>
+								<div className='bg-white h-52 rounded-2xl shadow-md p-10 flex items-center justify-start'>
 									<div className='flex items-center justify-start'>
 										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl ' style={{ backgroundColor: "#d2ecfe"}}>
 											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#b0d8f3"}}>
@@ -88,7 +87,7 @@ export const Main = () => {
 								</div>
 							</div>
 							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
-								<div className='bg-white h-52 rounded-xl shadow-md p-10 flex items-center justify-start'>
+								<div className='bg-white h-52 rounded-2xl shadow-md p-10 flex items-center justify-start'>
 									<div className='flex items-center justify-start'>
 										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl  ' style={{ backgroundColor: "#f5c4d9"}}>
 											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#ffa1c98c"}}>
@@ -102,7 +101,7 @@ export const Main = () => {
 								</div>
 							</div>
 							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
-								<div className='bg-white h-52 rounded-xl shadow-md p-10 flex items-center justify-start'>
+								<div className='bg-white h-52 rounded-2xl shadow-md p-10 flex items-center justify-start'>
 									<div className='flex items-center justify-start'>
 										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl  ' style={{ backgroundColor: "#00eeff38"}}>
 											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#4bf7e03a"}}>
@@ -116,10 +115,10 @@ export const Main = () => {
 								</div>
 							</div>
 							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
-								<div className='bg-white h-52 rounded-xl shadow-md p-10 flex items-center justify-start'>
+								<div className='bg-white h-52 rounded-2xl shadow-md p-10 flex items-center justify-start'>
 									<div className='flex items-center justify-start'>
-										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl' style={{ backgroundColor: "#006bff38"}}>
-											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#4b83f73b"}}>
+										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl' style={{ backgroundColor: "#c7c9ff"}}>
+											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#b3b5f7"}}>
 												<i className="material-icons likes-icon text-blue-500 text-3xl"  style={{  cursor: 'pointer'}}>article</i>
 											</div>
 										</div>
@@ -131,24 +130,10 @@ export const Main = () => {
 								</div>
 							</div>
 							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
-								<div className='bg-white h-52 rounded-xl shadow-md p-10 flex items-center justify-start'>
+								<div className='bg-white h-52 rounded-2xl shadow-md p-10 flex items-center justify-start' >
 									<div className='flex items-center justify-start'>
-										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl' style={{ backgroundColor: "#006bff38"}}>
-											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#4b83f73b"}}>
-												<i className="material-icons likes-icon text-blue-500 text-3xl"  style={{  cursor: 'pointer'}}>featured_play_list</i>
-											</div>
-										</div>
-										<div className='pl-5'>
-											<span className='text-lg font-bold text-blue-900'>Main topics</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
-								<div className='bg-white h-52 rounded-xl shadow-md p-10 flex items-center justify-start' >
-									<div className='flex items-center justify-start'>
-										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl' style={{ backgroundColor: "#006bff38"}}>
-											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#4b83f73b"}}>
+										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl' style={{ backgroundColor: "#ff000038"}}>
+											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#f9b1b1"}}>
 												<i className="material-icons likes-icon text-blue-500 text-3xl"  style={{  cursor: 'pointer'}}>article</i>
 											</div>
 										</div>
@@ -158,11 +143,81 @@ export const Main = () => {
 									</div>
 								</div>
 							</div>
+							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
+								<div className='bg-white h-52 rounded-2xl shadow-md p-10 flex items-center justify-start'>
+									<div className='flex items-center justify-start'>
+										<div className='  bg-blue-300  w-24 h-24 flex items-center justify-center rounded-2xl' style={{ backgroundColor: "#ff5e0038"}}>
+											<div className=' rounded-full bg-blue-300 w-16 h-16 flex items-center justify-center' style={{backgroundColor: "#f5c8ad"}}>
+												<i className="material-icons likes-icon text-blue-500 text-3xl"  style={{  cursor: 'pointer'}}>featured_play_list</i>
+											</div>
+										</div>
+										<div className='pl-5'>
+											<span className='text-lg font-bold text-blue-900'>Main topics</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</section>
-				<section className='py-10 w-full bg-purple-100 h-96' style={{ backgroundColor: '#5a8b972e'}}>
+				<section className='py-24 w-full bg-purple-100' style={{ backgroundColor: '#1778ff' /*'#5a8b972e'*/}}>
+					<div className='w-3/4 m-auto flex flex-wrap text-white '>
+						<div className='w-full lg:w-1/3 flex items-center  flex-col'>
+							<div className='text-center pb-10 pl-16 animate animate-fade-in-up'>
+								<h1> Announcements </h1>
+							</div>
+							<div className=" animate animate-fade-in-up p-20 rounded-full flex justify-center items-center bg-gray-100 rounded-t-full rounded-br-2xl " style={{ height: 500, backgroundColor: "#eff6ff"}}>
+								<img src={city} className="" />
+							</div>
+						</div>
+						<div className=' w-full lg:w-2/3 pt-44'>
+							<div className='text-center pb-10 lg:pl-16 '>
+									<div className='animate animate-fade-in-up font-semibold pb-3 text-2xl '>We welcome you to Montenegro and hope you enjoy a wonderful and useful stay here during the conference!</div>
+									<div className='py-5 animate animate-fade-in-up'>
+										<span className='text-gray-300 '>
+											On behalf of the Organizing Committee, we would like to inform you that we have done everything in our power to make sure you stay safe during the Congress. Your health is our absolute priority.
+										</span>
+									<div className='pt-14 animate animate-fade-in-up'>
+										<span className='font-semibold'>
+											We would like to inform you that the Government requirement for Congress participants is to bring one the following documents:
+										</span>
+										<div className='pt-2 text-left text-gray-300 px-20'>
+											<div className='p-2 animate animate-fade-in-up'>
+											- A negative PCR molecular test result from a laboratory; the test must be taken up to 72 hours before the event
+											</div>
+											<div className='p-2 animate animate-fade-in-up'>
+											- A negative antigen (rapid) test result from a laboratory; the test must be taken up to 48 hours before the event.
+											</div>
+											<div className='p-2 animate animate-fade-in-up'>
+											- A vaccination certificate issued by a certified authority.
+											</div>
+											<div className='p-2 animate animate-fade-in-up'>
+											- A certificate of recovery from the SARS-CoV-2 virus infection issued by a public authority or a certified laboratory
+											</div>
+										</div>
+									</div>
+									
 
+									<div className='pt-10'>
+										<span className='font-semibold animate animate-fade-in-up'>
+											"WE WILL PROVIDE A MEDICAL TEAM IN THE CONGRESS VENUE TO CONDUCT ANTIGEN (RAPID) TESTS BEFORE THE EVENT AS WELL FOR YOUR CONVENIENCE!"
+
+										</span>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</section>
+				<section className='py-24 w-full  h-96' style={{ height: 800}}>
+					<div className='text-center pb-16'>
+						<h1> Important Dates </h1>
+						<p className='text-gray-500'>
+							These are the most important dates
+						</p>
+					</div>
 				</section>
 			</div>
 			<Footer />
