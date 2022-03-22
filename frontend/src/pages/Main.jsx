@@ -211,13 +211,74 @@ export const Main = () => {
 						</div>
 					</div>
 				</section>
-				<section className='py-24 w-full  h-96' style={{ height: 800}}>
+				<section className='py-24 w-full'>
 					<div className='text-center pb-16'>
 						<h1> Important Dates </h1>
 						<p className='text-gray-500'>
 							These are the most important dates
 						</p>
 					</div>
+                    <div className='w-2/3 flex m-auto gap-5 justify-center'>
+                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
+                            <span>Late abstract submission opening:
+                            </span>
+                            <div className='pt-3'>
+                                <span className='font-bold'>OPEN</span>
+                            </div>
+                        </div>
+                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
+                            <span>
+                                Late abstract submission deadline:
+                            </span>
+                            <div className='pt-3'>
+                                <span className='font-bold'>20th July 2021</span>
+                            </div>
+                        </div>
+                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
+                            <span>
+                                Late abstract and poster acceptance notification:
+                            </span>
+                            <div className='pt-3'>
+                                <span className='font-bold'>20th July 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='w-2/3 flex m-auto gap-5 justify-center mt-10'>
+                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
+                            <span>Authors’ registration deadline:
+                            </span>
+                            <div className='pt-3'>
+                                <span className='font-bold'>20th July 2021</span>
+                            </div>
+                        </div>
+                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
+                            <span>
+                                Early bird registration deadline:
+
+                            </span>
+                            <div className='pt-3'>
+                                <span className='font-bold'>20th July 2021</span>
+                            </div>
+                        </div>
+                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
+                            <span>
+                                Online late registration deadline:
+                            </span>
+                            <div className='pt-3'>
+                                <span className='font-bold'>20th July 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='w-1/3 flex m-auto gap-5 justify-center mt-10  shadow-md'>
+                        <div className='bg-blue-500 p-5 rounded-md text-center flex-1 h-72 text-white pt-10'>
+                            <span className='text-2xl'>
+                                Official Opening Ceremony
+                            </span>
+                            <div className='p-3 bg-blue-400 w-52 rounded m-auto mt-16'>
+                                <span className='font-bold'>20th July 2021</span>
+                            </div>
+                        </div>
+                    </div>
 				</section>
 			</div>
 			<Footer />

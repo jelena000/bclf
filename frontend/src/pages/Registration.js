@@ -64,6 +64,22 @@ export const Registration = () => {
     }, [name, surname, email, phone, country, city, postalCode, organisation, adress, dietary]);
 
     useEffect(() => {
+        validatePersonalInfo();
+    }, [registrationPlan]);
+
+    useEffect(() => {
+        validateAccomodation();
+    }, [shouldAccommodate, arrivalDate, departureDate, nights, roomDeposit, noteAccommodate]);
+
+    useEffect(() => {
+        validateTransfer();
+    }, [arrivalTransfer, arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer, departureTransfer, departurePersonsTransfer, departureDateTransfer, departureFlightTransfer, departureFromTransfer]);
+
+    useEffect(() => {
+        validateInvoice();
+    }, [invoiceIssue, invoiceCompany, invoiceCountry, invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax]);
+    
+    useEffect(() => {
         //loadFormDataLocaly();
     }, []);
 
@@ -114,6 +130,73 @@ export const Registration = () => {
                 completedSteps.map((c,i) => ( i === 1 ? !c : c))
             )
         }
+    }
+    
+    const validateRegistration = () => {
+        let isValidate = true;
+    
+        if(!registrationPlan) isValidate = false;
+    
+        if(completedSteps[2] !== isValidate){
+            setCompletedSteps(
+                completedSteps.map((c,i) => ( i === 2 ? !c : c))
+            )
+        }
+    } 
+
+    const validateAccomodation = () => {
+        let isValidate = true;
+    
+        if(!shouldAccommodate) isValidate = false;
+        if(!arrivalDate) isValidate = false;
+        if(!departureDate) isValidate = false;
+        if(!nights) isValidate = false;
+        if(!roomDeposit) isValidate = false;
+        if(!noteAccommodate) isValidate = false;
+    
+        if(completedSteps[3] !== isValidate){
+            setCompletedSteps(
+                completedSteps.map((c,i) => ( i === 3 ? !c : c))
+            )
+        }
+    }
+
+    const validateTransfer = () => {
+        let isValidate = true;
+
+        if(!arrivalTransfer) isValidate = false;
+        if(!arrivalPersonsTransfer) isValidate = false;
+        if(!arrivalDateTransfer) isValidate = false;
+        if(!arrivalFlightTransfer) isValidate = false;
+        if(!arrivalFromTransfer) isValidate = false;
+        if(!departureTransfer) isValidate = false;
+        if(!departurePersonsTransfer) isValidate = false;
+        if(!departureFlightTransfer) isValidate = false;
+        if(!departureFromTransfer) isValidate = false;
+
+
+        if(completedSteps[4] !== isValidate){
+            setCompletedSteps(
+                completedSteps.map((c,i) => ( i === 4 ? !c : c))
+            )
+        }
+    }
+
+    const validateInvoice = () => {
+        let isValidate = true;
+
+        if(!invoiceIssue) isValidate = false;
+        if(!invoiceCompany) isValidate = false;
+        if(!invoiceCountry) isValidate = false;
+        if(!invoiceCity) isValidate = false;
+        if(!invoiceAdress) isValidate = false;
+        if(!invoiceRegNum) isValidate = false;
+        if(!invoiceTax) isValidate = false;
+        if(completedSteps[5] !== isValidate){
+            setCompletedSteps(
+                completedSteps.map((c,i) => ( i === 5 ? !c : c))
+            )
+        }				
     }
 
     const onSubmit = async () => {
@@ -270,9 +353,7 @@ export const Registration = () => {
             default: return null
         }
     }
-    console.log({selectedStep});
-    console.log({ da: selectedStep < completedSteps.length});
-    console.log(completedSteps.length);
+    
     return (
         <div className="home-root">
 			<div className="home-main bg-blue-50 pb-20 min-h-screen mb-10">
