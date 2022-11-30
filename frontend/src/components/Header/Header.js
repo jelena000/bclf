@@ -37,7 +37,7 @@ export default function Header({ isMain }) {
               <li className="nav-item">
                 <a
                   className="px-1 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href=""
                 >
                   <span className="ml-1 text-blue-100 text-xs" style={{ fontSize: 10}}>Meeting Information</span>
                 </a>
@@ -45,7 +45,7 @@ export default function Header({ isMain }) {
               <li className="nav-item">
                 <a
                   className="px-1 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href=""
                 >
                   <span className="ml-1 text-blue-100" style={{ fontSize: 10}}>Scientific Information</span>
                 </a>
@@ -53,7 +53,7 @@ export default function Header({ isMain }) {
               <li className="nav-item">
                 <a
                   className="px-1 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href=""
                 >
                   <span className="ml-1 text-blue-100" style={{ fontSize: 10}}>Accommodation</span>
                 </a>
@@ -61,7 +61,7 @@ export default function Header({ isMain }) {
               <li className="nav-item">
                 <a
                   className="px-1 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
+                  href=""
                 >
                   <span className="ml-1 text-blue-100" style={{ fontSize: 10}}>E-posters</span>
                 </a>

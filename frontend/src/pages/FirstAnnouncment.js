@@ -1,67 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header/Header'
-import budva1 from '../assets/budva.jpg';
-import budva2 from '../assets/katic.jpg';
-import budva from '../assets/panorama.jpg';
-import bclf from '../assets/bclf.png';
-import bscl from '../assets/bscl.png';
-import eflm from '../assets/eflm.png';
-import ifcc from '../assets/ifcc.png';
+import katic from '../assets/katic.jpg';
 import city from '../assets/people2.svg';
 import Footer from '../components/Footer/Footer';
-/**
- *                 <div className='h-96  relative w-full' style={{ background: 'linear-gradient(#001746, #133987)', zIndex: 22, height: 400}}>
 
- * @returns <div className='h-96  relative w-full overflow-hidden' style={{zIndex: 22, height: 400}}>
-                    <img className='absolute top-0 left-0 w-full h-full' src={budva} style={{ height: 700}} />
-					<div className='absolute top-0 left-0 w-full h-full' style={{ backgroundColor: '#182c54a3', zIndex: 22, background: 'linear-gradient(#001746, #012160a3)'}} />
-                </div>
- */
+export const FirstAnnouncment = () => {
 
-				//4b83f73b
-export const Main = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
 	return (
 		<div className="home-root">
 			<div className="home-main min-h-screen bg-blue-50">
 				<Header isMain />
 				<div className='h-cover-mobile lg:h-cover  relative'   >
-					<img className='absolute top-0 left-0 w-full h-full' src={budva} />//182c54a3 //'linear-gradient(#001746, #012160a3)'
-					<div className='absolute top-0 left-0 w-full h-full' style={{ backgroundColor: '#182c54a3', zIndex: 22, background: 'linear-gradient(#001746, #01216071)'}} />
+					<img className='absolute top-0 left-0 w-full h-full' src={katic} />
+					<div className='absolute top-0 left-0 w-full h-full' style={{ backgroundColor: '#182c54a3', zIndex: 22, background: 'linear-gradient(#001746, #012160a3)'}} />
 					<div className='relative w-3/4 m-auto h-full flex  items-center justify-center z-50 '>
 						<div className=''>
-							<h1 className='text-white lg:text-3xl text-lg text-center'>BALKAN CLINICAL LABORATORY FEDERATION MEETING</h1>
-							<div className='mt-10'>
-								<div className='pl-6 flex justify-start items-center'>
-									<i className="material-icons likes-icon text-yellow-400 text-base lg:text-2xl" style={{  paddingRight: 10, cursor: 'pointer'}}>event</i>
-
-									<h4 className='text-white font-medium lg:text-lg text-xs'>SEPTEMBER 8TH - SEPTEMBER 11TH 2022</h4>
-								</div>
-								<div className='pl-6 flex justify-start items-center'>
-									<i className="material-icons likes-icon text-yellow-400 text-base lg:text-2xl" style={{  paddingRight: 10, cursor: 'pointer'}}>room</i>
-									<h4 className='text-white font-medium lg:text-lg text-xs'>HOTEL MEDITERAN BUDVA, MONTENEGRO</h4>
+							<h1 className='text-white lg:text-4xl text-lg text-center '>21ST MEETING OF THE BALKAN <br></br><br></br> CLINICAL LABORATORY FEDERATION</h1>
+							<div className='mt-10 pt-20'>
+								<div className='pl-6  justify-between items-center lg:text-right lg:gap-20 gap-4 lg:flex block'>
+									<h4 className='text-white font-medium lg:text-xl text-base'>2ND MONTENEGRIAN CONFERENCE <br></br> OF CLINICAL CHEMISTRY <br></br> AND LABORATORY MEDICINE</h4>
+									<h4 className='text-white font-medium lg:text-xl text-base'>DRUGI CRNOGORSKI KONGRES <br></br> KLINICKE HEMIJE <br></br> I LABARATORIJSKE MEDICINE</h4>
 								</div>
 							</div>
 						</div>
 						
-					</div>
-				</div>
-				<div className='w-full relative z-40'>
-					<div className='w-full md:w-3/5 bg-blue-500 md:h-52 m-auto -mt-32 rounded-lg' style={{ backgroundColor: '#1778ff'}}>
-						<div className=' flex flex-wrap justify-center items-center w-4/5 h-full m-auto'>
-							<div className='w-1/2 p-5 md:w-1/4 flex flex-wrap justify-center items-center'>
-								<img src={bclf} className="" />
-							</div>
-							<div className='w-1/2 p-5 md:w-1/4 flex flex-wrap justify-center items-center'>
-								<img src={bscl} className="" />
-							</div>
-							<div className='w-1/2 p-5 md:w-1/4 flex flex-wrap justify-center items-center'>
-								<img src={eflm} className="" />
-							</div>
-							<div className='w-1/2 p-5 md:w-1/4 flex flex-wrap justify-center items-center'>
-								<img src={ifcc} className="" />
-							</div>
-						</div>
 					</div>
 				</div>
 				<section className='pb-32'>
@@ -128,6 +95,7 @@ export const Main = () => {
                                             <Link to="/FirstAnnouncment" className='text-lg font-bold text-blue-900 cursor-pointer hover:underline'>First Announcement</Link>
 										</div>
 									</div>
+									
 								</div>
 							</div>
 							<div className='w-full p-5 md:w-1/2 xl:w-1/3'>
@@ -212,75 +180,7 @@ export const Main = () => {
 						</div>
 					</div>
 				</section>
-				<section className='py-24 w-full'>
-					<div className='text-center pb-16'>
-						<h1> Important Dates </h1>
-						<p className='text-gray-500'>
-							These are the most important dates
-						</p>
-					</div>
-                    <div className='w-2/3 flex m-auto gap-5 justify-center'>
-                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
-                            <span>Late abstract submission opening:
-                            </span>
-                            <div className='pt-3'>
-                                <span className='font-bold'>OPEN</span>
-                            </div>
-                        </div>
-                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
-                            <span>
-                                Late abstract submission deadline:
-                            </span>
-                            <div className='pt-3'>
-                                <span className='font-bold'>20th July 2021</span>
-                            </div>
-                        </div>
-                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
-                            <span>
-                                Late abstract and poster acceptance notification:
-                            </span>
-                            <div className='pt-3'>
-                                <span className='font-bold'>20th July 2021</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='w-2/3 flex m-auto gap-5 justify-center mt-10'>
-                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
-                            <span>Authors’ registration deadline:
-                            </span>
-                            <div className='pt-3'>
-                                <span className='font-bold'>20th July 2021</span>
-                            </div>
-                        </div>
-                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
-                            <span>
-                                Early bird registration deadline:
-
-                            </span>
-                            <div className='pt-3'>
-                                <span className='font-bold'>20th July 2021</span>
-                            </div>
-                        </div>
-                        <div className='bg-gray-300 p-5 rounded-md text-center flex-1 h-28  shadow-md' style={{ backgroundColor: "#bdd8ff"}}>
-                            <span>
-                                Online late registration deadline:
-                            </span>
-                            <div className='pt-3'>
-                                <span className='font-bold'>20th July 2021</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='w-1/3 flex m-auto gap-5 justify-center mt-10  shadow-md'>
-                        <div className='bg-blue-500 p-5 rounded-md text-center flex-1 h-72 text-white pt-10'>
-                            <span className='text-2xl'>
-                                Official Opening Ceremony
-                            </span>
-                            <div className='p-3 bg-blue-400 w-52 rounded m-auto mt-16'>
-                                <span className='font-bold'>20th July 2021</span>
-                            </div>
-                        </div>
-                    </div>
-				</section>
+				
 			</div>
 			<Footer />
 		</div>

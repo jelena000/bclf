@@ -12,8 +12,7 @@ import Transfers from '../components/StepForms/Transfers/Transfers';
 import Invoice from '../components/StepForms/Invoice';
 import Submit from '../components/StepForms/Submit';
 import {constants} from '../_constants/constants';
-import validator from 'validator';
-import katic from '../assets/panorama.jpg';
+import { FOCUSABLE_SELECTOR, isClickableInput } from '@testing-library/user-event/dist/utils';
 
 export const Registration = () => {
     const [loading, setloading] = useState(false);
@@ -34,42 +33,38 @@ export const Registration = () => {
     //REGISTRATION
     const [registrationPlan, setRegistrationPlane] = useState(null);
     //ACCOMMODATION
-    const [shouldAccommodate, setShouldAccommodate] = useState('No');
+    const [shouldAccommodate, setShouldAccommodate] = useState({ label: "No", value: "No"});
     const [arrivalDate, setArrivalDate] = useState(new Date());
     const [departureDate, setDepartureDate] = useState(new Date());
     const [nights, setNights] = useState('');
     const [roomDeposit, setRoomDeposit] = useState('');
     const [noteAccommodate, setNodeAccommodate] = useState('');
     //TRANSFER
-    const [arrivalTransfer, setArrivalTransfer] = useState('No');
+    const [arrivalTransfer, setArrivalTransfer] = useState({ label: "No", value: "No"});
     const [arrivalPersonsTransfer, setArrivalPersonsTransfer] = useState(1);
     const [arrivalDateTransfer, setArrivalDateTransfer] = useState(new Date());
     const [arrivalFlightTransfer, setArrivalFlightTransfer] = useState('');
     const [arrivalFromTransfer, setArrivalFromTransfer] = useState('');
-    const [departureTransfer, setDepartureTransfer] = useState('No');
+    const [departureTransfer, setDepartureTransfer] = useState({ label: "No", value: "No"});
     const [departurePersonsTransfer, setDeparturePersonsTransfer] = useState(1);
     const [departureDateTransfer, setDepartureDateTransfer] = useState(new Date());
     const [departureFlightTransfer, setDepartureFlightTransfer] = useState('');
     const [departureFromTransfer, setDepartureFromTransfer] = useState('');
     //INVOICE
-    const [invoiceIssue, setInvoiceIssue] = useState('No');
+    const [invoiceIssue, setInvoiceIssue] = useState(1);
     const [invoiceCompany, setInvoiceCompany] = useState('');
     const [invoiceCountry, setInvoiceCountry] = useState('');
     const [invoiceCity, setInvoiceCity] = useState('');
     const [invoiceAdress, setInvoiceAdress] = useState('');
     const [invoiceRegNum, setInvoiceRegNum] = useState('');
     const [invoiceTax, setInvoiceTax] = useState('');
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
+    
     useEffect(() => {
         validatePersonalInfo();
     }, [name, surname, email, phone, country, city, postalCode, organisation, adress, dietary]);
-
+   
     useEffect(() => {
-        validatePersonalInfo();
+        validateRegistration();
     }, [registrationPlan]);
 
     useEffect(() => {
@@ -78,12 +73,13 @@ export const Registration = () => {
 
     useEffect(() => {
         validateTransfer();
-    }, [arrivalTransfer, arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer, departureTransfer, departurePersonsTransfer, departureDateTransfer, departureFlightTransfer, departureFromTransfer]);
+    }, [arrivalTransfer, arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer,departureTransfer , departurePersonsTransfer, departureFlightTransfer, departureFromTransfer]);
 
     useEffect(() => {
         validateInvoice();
     }, [invoiceIssue, invoiceCompany, invoiceCountry, invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax]);
-    
+
+
     useEffect(() => {
         //loadFormDataLocaly();
     }, []);
@@ -93,8 +89,7 @@ export const Registration = () => {
 
         if(!local_data){
             saveFormDataLocaly();
-        }
-        else {
+        }else {
             const form_data = await JSON.parse(local_data);
 
             if(form_data){
@@ -122,7 +117,6 @@ export const Registration = () => {
 
         if(!name) isValidate = false;
         if(!surname) isValidate = false;
-        if(!validator.isEmail(email)) isValidate = false;
         if(!phone) isValidate = false;
         if(!country) isValidate = false;
         if(!city) isValidate = false;
@@ -149,7 +143,6 @@ export const Registration = () => {
             )
         }
     } 
-
     const validateAccomodation = () => {
         let isValidate = true;
     
@@ -181,7 +174,7 @@ export const Registration = () => {
         if(!departureFromTransfer) isValidate = false;
 
 
-        if(completedSteps[4] !== isValidate){
+ if(completedSteps[4] !== isValidate){
             setCompletedSteps(
                 completedSteps.map((c,i) => ( i === 4 ? !c : c))
             )
@@ -202,8 +195,9 @@ export const Registration = () => {
             setCompletedSteps(
                 completedSteps.map((c,i) => ( i === 5 ? !c : c))
             )
-        }				
+        }
     }
+
 
     const onSubmit = async () => {
         await setloading(true);
@@ -359,14 +353,16 @@ export const Registration = () => {
             default: return null
         }
     }
-    
+    console.log({selectedStep});
+    console.log({ da: selectedStep < completedSteps.length});
+    console.log(completedSteps.length);
     return (
         <div className="home-root">
 			<div className="home-main bg-blue-50 pb-20 min-h-screen mb-10">
 				<Header isMain />
                 <div className='h-96  relative w-full overflow-hidden' style={{zIndex: 22, height: 400}}>
-                    <img className='absolute top-0 left-0 w-full h-full' src={katic} style={{ height: 450}} /> //'linear-gradient(#001746, #012160a3)'
-					<div className='absolute top-0 left-0 w-full h-full' style={{ backgroundColor: '#182c54a3', zIndex: 22, background: 'linear-gradient(#001746, #01216071)'}} />
+                    <img className='absolute top-0 left-0 w-full h-full' src={budva} style={{ height: 800}} />
+					<div className='absolute top-0 left-0 w-full h-full' style={{ backgroundColor: '#182c54a3', zIndex: 22, background: 'linear-gradient(#001746, #012160a3)'}} />
                 </div>
                 <div className='w-full relative z-40 -mt-60 pb-52'>
                     <div className='w-full md:w-3/5 m-auto text-white text-center pb-10'>
@@ -418,4 +414,5 @@ export const Registration = () => {
 		</div>
         
     )
-}
+                }
+                

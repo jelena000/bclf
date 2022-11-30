@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const moment = require('moment');
-const awsConfig = require('../config/aws-config');
-const AWS = require("aws-sdk");
+//const awsConfig = require('../config/aws-config');
+//const AWS = require("aws-sdk");
+const pool = require("../database");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -16,8 +16,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //CONNECT ON AWS
-AWS.config.update(awsConfig);
-const docClient = new AWS.DynamoDB.DocumentClient();
+//AWS.config.update(awsConfig);
+//const docClient = new AWS.DynamoDB.DocumentClient();
 
 /*
 const fetchOneByKey = () => {
@@ -48,28 +48,41 @@ router.route('/register').post(async function (req, res) {
             {res.status(200).json(retVal);  return;}
         
         const { 
-            /*completedSteps,*/
-            name, surname, email, phone, /*country,*/ city, postalCode, organisation, adress, dietary, invitationLetter,
+            completedSteps,
+            name, surname, email, phone, country, city, postalCode, organisation, adress, dietary, invitationLetter,
             registrationPlan,
-            /*shouldAccommodate,*/ arrivalDate, departureDate, nights, roomDeposit, noteAccommodate,
-            /*arrivalTransfer,*/ arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer, /*departureTransfer,*/
+            shouldAccommodate, arrivalDate, departureDate, nights, roomDeposit, noteAccommodate,
+            arrivalTransfer, arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer, departureTransfer,
             departurePersonsTransfer, departureDateTransfer, departureFlightTransfer, departureFromTransfer, 
-            /*invoiceIssue,*/ invoiceCompany, /*invoiceCountry,*/ invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax
+            invoiceIssue, invoiceCompany, invoiceCountry, invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax
         } = req.body;
 
-        const data = { 
-            registrationPlan,
-            name, surname, email, phone, city, postalCode, organisation, adress, dietary, invitationLetter,
-            arrivalDate, departureDate, nights, roomDeposit, noteAccommodate,
-            arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer, 
-            departurePersonsTransfer, departureDateTransfer, departureFlightTransfer, departureFromTransfer, 
-            invoiceCompany, invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax
-        };
+        const params = [ 
+            'Mr.',name, surname, email, phone, country, city, postalCode, organisation, adress, dietary, invitationLetter,
+            shouldAccommodate, arrivalDate,  nights, roomDeposit, noteAccommodate,
+            arrivalTransfer, arrivalPersonsTransfer, arrivalDateTransfer, arrivalFlightTransfer, arrivalFromTransfer,
+            departurePersonsTransfer,departureDateTransfer,  departureFlightTransfer, departureFromTransfer,
+            invoiceIssue,invoiceCompany, invoiceCountry, invoiceCity, invoiceAdress, invoiceRegNum, invoiceTax,
+            registrationPlan ? registrationPlan.price : "",
+            registrationPlan ? registrationPlan.name : "",
+        ];
 
-        const isSuccess = await createNewUser(data);
-        if(isSuccess){
+
+        const queryInsertAccount = `INSERT INTO "user" (
+            title, name, surname, email, phone, 
+            country, city, postalcode, organisation, adress, dietary, invitationletter, shouldaccommodate, 
+            arrivaldate, nights, roomdeposit, noteaccommodate, arrivaltransfer, arrivalpersonstransfer, 
+            arrivaldatetransfer, arrivalflighttransfer, arrivalfromtransfer, departurepersonstransfer, departuredatetransfer, 
+            departureflighttransfer, departurefromtransfer, invoiceissue, invoicecompany, invoicecountry, invoicecity, 
+            invoiceadress, invoiceregnum, invoicetax, registrationname, registrationprice)
+            VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35)  
+            RETURNING id
+        `;
+        const { rows } = await pool.query(queryInsertAccount, params);
+        if((rows.length > 0)){
             retVal.success = true;
             retVal.msg = 'Very good';
+            console.log({rows});
         }else {
             retVal.msg = 'Failed, try again later';
         }
@@ -77,11 +90,11 @@ router.route('/register').post(async function (req, res) {
 		res.status(200).json(retVal);
 	}
 	catch(err) {
-        //console.log(err);
+        console.log(err);
 		res.status(200).json([]);
 	}
 });
-
+/*
 const createNewUser = async (data) => {
     try {
         const inputs = {
@@ -145,5 +158,5 @@ const fetchAllUsers = async () => {
         return [];
     }
 }
-
+*/
 module.exports = router;

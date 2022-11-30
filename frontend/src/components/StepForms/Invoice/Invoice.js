@@ -38,7 +38,7 @@ const Transfers = (
                     <div className='w-full md:w-5/6'>
                         <DropDownList
                             placeholder='Choose' 
-                            options={[{label:'Yes', value: 1},{label:'No', value: 2}]} 
+                            options={[{label:'Yes', value: 'Yes'},{label:'No', value: 'No'}]} 
                             selectedValue={invoiceIssue} 
                             onValueChange={setInvoiceIssue} 
                         /> 
