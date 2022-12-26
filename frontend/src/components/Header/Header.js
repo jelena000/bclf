@@ -1,11 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import mne from '../../assets/mne-zastava.png'
+import eng from '../../assets/eng-zastava.png'
 
 export default function Header({ isMain }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   const onRegister = () => {
 
+  }
+  const handleLanguageMne = () => {
+    localStorage.setItem('BCFL_LANG', JSON.stringify("MNE"));
+    window.location.reload();
+  }
+  const handleLanguageEng = () => {
+    localStorage.setItem('BCFL_LANG', JSON.stringify("ENG"));
+    window.location.reload();
   }
 
   return (
@@ -68,6 +78,16 @@ export default function Header({ isMain }) {
               </li>
               <li className="nav-item">
                 <Link to='/Registration' className="p-2 border border-blue-200 rounded-md text-blue-200  text-xs cursor-pointer hover:opacity-75" >REGISTRATION</Link>
+              </li>
+              <li className="flag" onClick={handleLanguageMne}>
+                <a href="#">
+                  <img alt="crnogorski" className="cg-language" src={mne}></img>
+                </a>
+              </li>
+              <li className="flag" onClick={handleLanguageEng}>
+                <a href="#">
+                  <img alt="engleski" className="eng-language" src={eng}></img>
+                </a>
               </li>
             </ul>
           </div>
